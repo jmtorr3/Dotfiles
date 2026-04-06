@@ -1,0 +1,54 @@
+/**
+ * VPN Menu Theme - Fixed Syntax
+ **/
+
+@import "~/.config/rofi/colors/nord.rasi"
+
+configuration {
+    show-icons: false;
+    display-dmenu: "󰇧 VPN";
+    click-to-exit: true;
+}
+
+window {
+    width: 300px;
+    location: northeast;
+    anchor: northeast;
+    x-offset: -120px; 
+    y-offset: 45px;
+    border: 2px;
+    border-color: @selected;
+    border-radius: 12px;
+    background-color: @background;
+}
+
+mainbox {
+    background-color: transparent;
+    children: [ listview ];
+}
+
+listview {
+    background-color: transparent;
+    columns: 1;
+    lines: 4;
+    spacing: 5px;
+    padding: 10px;
+}
+
+element {
+    padding: 8px;
+    border-radius: 8px;
+    background-color: transparent;
+    text-color: @foreground;
+}
+
+element-text {
+    background-color: inherit;
+    text-color: inherit;
+    vertical-align: 0.5;
+}
+
+element selected {
+    background-color: @selected;
+    text-color: @background;
+}

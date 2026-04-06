@@ -421,4 +421,3 @@ augroup AlphaHeaderHL
   autocmd ColorScheme * lua vim.api.nvim_set_hl(0, "AlphaHeader", { fg = "#34abeb", bold = true })
 augroup END
 
-
