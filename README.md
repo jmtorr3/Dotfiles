@@ -12,6 +12,13 @@ Installs all packages via Homebrew, symlinks configs, and starts the Sketchybar 
 ./scripts/install/macos/mac.sh
 ```
 
+**Sketchybar dependencies:** `jq`, `Monocraft` font, `Hack Nerd Font`
+
+```bash
+brew install jq
+brew install --cask font-monocraft font-hack-nerd-font
+```
+
 ### Full Desktop (Arch Linux)
 
 Installs Hyprland + all dependencies (waybar, rofi, dunst, kitty, etc.) and symlinks all configs:
@@ -56,7 +63,7 @@ Backs up any existing configs to `<name>.bak` before linking.
 | Config | Location | Description |
 |--------|----------|-------------|
 | AeroSpace | `config/aerospace/` | Tiling window manager — keybinds, gaps, workspace rules; fires Sketchybar triggers |
-| Sketchybar | `config/sketchybar/` | Status bar — workspace indicator, clock, battery, volume, front app |
+| Sketchybar | `config/sketchybar/` | Status bar — dynamic workspace indicators with app icons, clock, battery, volume. Font: Monocraft (text) + Hack Nerd Font (glyphs) |
 
 ### Hyprland Desktop (Linux)
 
@@ -91,8 +98,11 @@ Config lives at `config/nvim/linux/init.vim` (Linux) or `config/nvim/macos/init.
 config/
 ├── aerospace/   # AeroSpace window manager (macOS)
 ├── sketchybar/  # Status bar + plugins (macOS)
+│   ├── sketchybarrc
 │   └── plugins/
-│       ├── aerospace.sh   # Highlights focused workspace (chmod +x required)
+│       ├── aerospace.sh   # Workspace visibility, focus highlight, app icon labels
+│       ├── app_icon.sh    # App name → Nerd Font glyph lookup
+│       ├── app_space.sh   # Standalone icon updater (reference)
 │       ├── battery.sh
 │       ├── clock.sh
 │       ├── front_app.sh
