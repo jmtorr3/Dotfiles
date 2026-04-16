@@ -7,6 +7,7 @@ set -e
 
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 CONFIG_DIR="$HOME/.config"
+OS="$(uname)"
 
 mkdir -p "$CONFIG_DIR"
 
@@ -36,16 +37,23 @@ link_config() {
 
 info "Symlinking configs from $DOTFILES_DIR"
 
-# Hyprland + ecosystem
-link_config hypr
-link_config waybar
-link_config rofi
-link_config dunst
-link_config kitty
+if [[ "$OS" == "Darwin" ]]; then
+  # macOS
+  link_config aerospace
+  link_config sketchybar
+  NVIM_SRC="$DOTFILES_DIR/config/nvim/macos/init.vim"
+else
+  # Linux
+  link_config hypr
+  link_config waybar
+  link_config rofi
+  link_config dunst
+  link_config kitty
+  NVIM_SRC="$DOTFILES_DIR/config/nvim/linux/init.vim"
+fi
 
-# Neovim
+# Neovim (shared, OS-specific source)
 mkdir -p "$CONFIG_DIR/nvim"
-NVIM_SRC="$DOTFILES_DIR/config/nvim/linux/init.vim"
 NVIM_DST="$CONFIG_DIR/nvim/init.vim"
 
 if [ -L "$NVIM_DST" ]; then
