@@ -9,16 +9,18 @@ source "$HOME/.config/sketchybar/plugins/app_icon.sh"
 
 SPACE_ID="$1"
 
-##### Focus highlight #####
-if [ "$SPACE_ID" = "$FOCUSED_WORKSPACE" ]; then
-  sketchybar --set "$NAME" background.drawing=on \
-                            background.color=0xffffffff \
-                            icon.color=0xff000000 \
-                            label.color=0xff000000
-else
-  sketchybar --set "$NAME" background.drawing=off \
-                            icon.color=0xffffffff \
-                            label.color=0xffcad3f5
+##### Focus highlight (only on workspace change, not app switch) #####
+if [ "$SENDER" = "aerospace_workspace_change" ]; then
+  if [ "$SPACE_ID" = "$FOCUSED_WORKSPACE" ]; then
+    sketchybar --set "$NAME" background.drawing=on \
+                              background.color=0xffffffff \
+                              icon.color=0xff000000 \
+                              label.color=0xff000000
+  else
+    sketchybar --set "$NAME" background.drawing=off \
+                              icon.color=0xffffffff \
+                              label.color=0xffcad3f5
+  fi
 fi
 
 ##### App icons for this space #####
