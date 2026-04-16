@@ -5,8 +5,10 @@
 
 PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
 
+source "$HOME/.config/sketchybar/colors.sh"
+
 ##### Bar Appearance #####
-sketchybar --bar position=top height=40 blur_radius=30 color=0x40000000
+sketchybar --bar position=top height=40 blur_radius=30 color="$WAL_BAR_BG"
 
 ##### Changing Defaults #####
 default=(
@@ -14,8 +16,8 @@ default=(
   padding_right=5
   icon.font="Monocraft:SemiBold:17.0"
   label.font="Monocraft:SemiBold:14.0"
-  icon.color=0xffffffff
-  label.color=0xffffffff
+  icon.color="$WAL_FG"
+  label.color="$WAL_FG"
   icon.padding_left=4
   icon.padding_right=4
   label.padding_left=4
@@ -40,7 +42,7 @@ do
     label.padding_right=7
     icon.font="Monocraft:SemiBold:17.0"
     label.font="Hack Nerd Font:Bold:12.0"
-    background.color=0x40ffffff
+    background.color="$WAL_SPACE_BG"
     background.corner_radius=5
     background.height=25
     background.drawing=off

@@ -5,6 +5,7 @@
 export PATH="/opt/homebrew/bin:$PATH"
 
 source "$HOME/.config/sketchybar/plugins/app_icon.sh"
+source "$HOME/.config/sketchybar/colors.sh"
 
 SPACE_ID="$1"
 
@@ -38,13 +39,13 @@ fi
 ##### Focus highlight #####
 if [ "$SPACE_ID" = "$FOCUSED" ]; then
   sketchybar --set "$NAME" background.drawing=on \
-                            background.color=0xffffffff \
-                            icon.color=0xff000000 \
-                            label.color=0xff000000
+                            background.color="$WAL_ACCENT" \
+                            icon.color="$WAL_ACCENT_FG" \
+                            label.color="$WAL_ACCENT_FG"
 else
   sketchybar --set "$NAME" background.drawing=off \
-                            icon.color=0xffffffff \
-                            label.color=0xffcad3f5
+                            icon.color="$WAL_FG" \
+                            label.color="$WAL_MUTED"
 fi
 
 ##### Icon label #####
