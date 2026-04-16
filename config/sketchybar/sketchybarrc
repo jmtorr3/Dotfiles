@@ -63,7 +63,9 @@ sketchybar --add item clock right \
            --subscribe volume volume_change \
            --add item battery right \
            --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
-           --subscribe battery system_woke power_source_change
+           --subscribe battery system_woke power_source_change \
+           --add item cpu right \
+           --set cpu update_freq=2 icon="$(printf '\xef\x92\xbc')" script="$PLUGIN_DIR/cpu.sh"
 
 ##### Pill brackets #####
 # Left pill — workspace indicators
@@ -77,7 +79,7 @@ sketchybar --add bracket spaces_pill \
              background.border_width=0
 
 # Right pill — clock, volume, battery
-sketchybar --add bracket right_pill clock volume battery \
+sketchybar --add bracket right_pill clock volume battery cpu \
            --set right_pill \
              background.color="$WAL_BG" \
              background.corner_radius=15 \
