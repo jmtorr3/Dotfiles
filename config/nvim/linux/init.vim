@@ -97,6 +97,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'nvim-lualine/lualine.nvim'
   Plug 'lewis6991/gitsigns.nvim'
   Plug 'numToStr/Comment.nvim'
+  Plug 'lukas-reineke/indent-blankline.nvim'
 call plug#end()
 
 " =============================
@@ -407,6 +408,13 @@ end)
 
 pcall(function()
   require("Comment").setup()
+end)
+
+pcall(function()
+  require("ibl").setup({
+    indent = { char = "│" },
+    scope  = { enabled = true, show_start = false, show_end = false },
+  })
 end)
 EOF
 
