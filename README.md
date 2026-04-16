@@ -1,8 +1,16 @@
 # Dotfiles
 
-Personal configuration files for my Hyprland desktop and Neovim setup.
+Personal configuration files for Neovim, Hyprland (Linux), and macOS (AeroSpace + Sketchybar).
 
 ## Setup
+
+### macOS (AeroSpace + Sketchybar + Neovim)
+
+Installs all packages via Homebrew, symlinks configs, and starts the Sketchybar service:
+
+```bash
+./scripts/install/macos/mac.sh
+```
 
 ### Full Desktop (Arch Linux)
 
@@ -43,7 +51,14 @@ Backs up any existing configs to `<name>.bak` before linking.
 
 ## What's Included
 
-### Hyprland Desktop
+### macOS
+
+| Config | Location | Description |
+|--------|----------|-------------|
+| AeroSpace | `config/aerospace/` | Tiling window manager — keybinds, gaps, workspace rules; fires Sketchybar triggers |
+| Sketchybar | `config/sketchybar/` | Status bar — workspace indicator, clock, battery, volume, front app |
+
+### Hyprland Desktop (Linux)
 
 | Config | Location | Description |
 |--------|----------|-------------|
@@ -55,7 +70,7 @@ Backs up any existing configs to `<name>.bak` before linking.
 
 ### Neovim
 
-Config lives at `config/nvim/linux/init.vim`. Uses [vim-plug](https://github.com/junegunn/vim-plug).
+Config lives at `config/nvim/linux/init.vim` (Linux) or `config/nvim/macos/init.vim` (macOS). Uses [vim-plug](https://github.com/junegunn/vim-plug).
 
 **Plugins:**
 - `github-nvim-theme` — colorscheme
@@ -74,18 +89,28 @@ Config lives at `config/nvim/linux/init.vim`. Uses [vim-plug](https://github.com
 
 ```
 config/
+├── aerospace/   # AeroSpace window manager (macOS)
+├── sketchybar/  # Status bar + plugins (macOS)
+│   └── plugins/
+│       ├── aerospace.sh   # Highlights focused workspace (chmod +x required)
+│       ├── battery.sh
+│       ├── clock.sh
+│       ├── front_app.sh
+│       ├── space.sh
+│       └── volume.sh
 ├── hypr/        # Hyprland, hyprpaper, hypridle, hyprlock + scripts + wallpapers
 ├── waybar/      # Bar config, theme, scripts
 ├── rofi/        # Launcher + all menus
 ├── dunst/       # Notifications
 ├── kitty/       # Terminal
 └── nvim/
-    ├── linux/   # Linux config (used by install scripts)
+    ├── linux/   # Linux config
     └── macos/   # macOS config
 
 scripts/
 ├── symlink.sh                   # Symlink all configs to ~/.config/
 └── install/
+    ├── macos/mac.sh             # Full macOS setup (brew + symlinks)
     ├── hyprland/arch.sh         # Full Arch setup
     └── nvim/
         ├── debian.sh
