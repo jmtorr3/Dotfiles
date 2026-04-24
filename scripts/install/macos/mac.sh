@@ -44,10 +44,12 @@ BREW_PKGS=(
   neovim
   curl
   git
+  latexmk
 )
 
 BREW_CASK_PKGS=(
   aerospace
+  skim
 )
 
 TAP_PKGS=(
@@ -86,9 +88,9 @@ mkdir -p "$CONFIG_DIR"
 link_config aerospace
 link_config sketchybar
 
-# Neovim (macOS config)
+# Neovim
 mkdir -p "$CONFIG_DIR/nvim"
-NVIM_SRC="$DOTFILES_DIR/config/nvim/macos/init.vim"
+NVIM_SRC="$DOTFILES_DIR/config/nvim/init.vim"
 NVIM_DST="$CONFIG_DIR/nvim/init.vim"
 
 if [ -L "$NVIM_DST" ]; then

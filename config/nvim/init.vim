@@ -19,8 +19,8 @@ nnoremap <leader>tc :tabclose<CR>
 nnoremap <leader>to :tabonly<CR>
 
 " Use H and L (Shift+h/l) to jump between tabs quickly
-nnoremap H :tabprevious<CR>
-nnoremap L :tabnext<CR>
+nnoremap <leader>H :tabprevious<CR>
+nnoremap <leader>L :tabnext<CR>
 
 " Move tabs around with leader + arrow keys
 nnoremap <leader><Left> :tabmove -1<CR>
@@ -35,9 +35,13 @@ augroup AlphaOnNewTab
 augroup END
 
 " =============================
-" Vimtex settings (macOS)
+" Vimtex settings
 " =============================
-let g:vimtex_view_method = 'skim'
+if has('mac')
+  let g:vimtex_view_method = 'skim'
+else
+  let g:vimtex_view_method = 'zathura'
+endif
 let g:vimtex_compiler_method = 'latexmk'
 " optional: keep vimtex mappings on (default is 1)
 let g:vimtex_mappings_enabled = 1

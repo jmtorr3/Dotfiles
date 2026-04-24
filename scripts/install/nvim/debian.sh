@@ -6,7 +6,7 @@
 set -e
 
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../../.." && pwd)"
-NVIM_CONFIG_SRC="$DOTFILES_DIR/config/nvim/linux/init.vim"
+NVIM_CONFIG_SRC="$DOTFILES_DIR/config/nvim/init.vim"
 
 info() { echo "[INFO]  $*"; }
 ok()   { echo "[OK]    $*"; }
@@ -14,6 +14,10 @@ err()  { echo "[ERROR] $*" >&2; exit 1; }
 
 command -v curl &>/dev/null || sudo apt-get install -y curl
 command -v git  &>/dev/null || sudo apt-get install -y git
+
+info "Installing LaTeX tooling (zathura, latexmk)..."
+sudo apt-get install -y zathura latexmk
+ok "LaTeX tooling installed."
 
 info "Installing Neovim (latest stable) from GitHub releases..."
 

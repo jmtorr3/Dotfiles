@@ -5,7 +5,7 @@
 set -e
 
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../../.." && pwd)"
-NVIM_CONFIG_SRC="$DOTFILES_DIR/config/nvim/linux/init.vim"
+NVIM_CONFIG_SRC="$DOTFILES_DIR/config/nvim/init.vim"
 
 info() { echo "[INFO]  $*"; }
 ok()   { echo "[OK]    $*"; }
@@ -16,6 +16,10 @@ sudo add-apt-repository -y ppa:neovim-ppa/unstable
 sudo apt-get update
 sudo apt-get install -y neovim curl git
 ok "Neovim installed: $(nvim --version | head -1)"
+
+info "Installing LaTeX tooling (zathura, latexmk)..."
+sudo apt-get install -y zathura latexmk
+ok "LaTeX tooling installed."
 
 info "Installing vim-plug..."
 curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}/nvim/site/autoload/plug.vim" \

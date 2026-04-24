@@ -41,7 +41,6 @@ if [[ "$OS" == "Darwin" ]]; then
   # macOS
   link_config aerospace
   link_config sketchybar
-  NVIM_SRC="$DOTFILES_DIR/config/nvim/macos/init.vim"
 else
   # Linux
   link_config hypr
@@ -49,10 +48,11 @@ else
   link_config rofi
   link_config dunst
   link_config kitty
-  NVIM_SRC="$DOTFILES_DIR/config/nvim/linux/init.vim"
 fi
 
-# Neovim (shared, OS-specific source)
+NVIM_SRC="$DOTFILES_DIR/config/nvim/init.vim"
+
+# Neovim (shared)
 mkdir -p "$CONFIG_DIR/nvim"
 NVIM_DST="$CONFIG_DIR/nvim/init.vim"
 

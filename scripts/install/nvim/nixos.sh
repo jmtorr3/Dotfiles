@@ -6,7 +6,7 @@
 set -e
 
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../../.." && pwd)"
-NVIM_CONFIG_SRC="$DOTFILES_DIR/config/nvim/linux/init.vim"
+NVIM_CONFIG_SRC="$DOTFILES_DIR/config/nvim/init.vim"
 
 info() { echo "[INFO]  $*"; }
 ok()   { echo "[OK]    $*"; }
@@ -16,6 +16,10 @@ command -v nix-env &>/dev/null || { echo "[ERROR] nix-env not found. Are you on 
 info "Installing neovim via nix-env..."
 nix-env -iA nixpkgs.neovim nixpkgs.curl nixpkgs.git
 ok "Neovim installed: $(nvim --version | head -1)"
+
+info "Installing LaTeX tooling (zathura, texlive with latexmk)..."
+nix-env -iA nixpkgs.zathura nixpkgs.texlive.combined.scheme-medium
+ok "LaTeX tooling installed."
 
 info "Installing vim-plug..."
 curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}/nvim/site/autoload/plug.vim" \
