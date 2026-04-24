@@ -10,7 +10,7 @@ app_icon() {
     "Safari")            printf '\xef\x89\xa7' ;;  # U+F267 nf-fa-safari
     "Arc"|"Google Chrome"|"Chromium")
                          printf '\xef\x89\xa8' ;;  # U+F268 nf-fa-chrome
-    "Firefox")           printf '\xef\x89\xa9' ;;  # U+F269 nf-fa-firefox
+    "Firefox")           printf '\xf3\xb0\x88\xb9' ;;  # U+F269 nf-fa-firefox
     # Editors / Dev
     "Code"|"Visual Studio Code")
                          printf '\xee\x9c\x8c' ;;  # U+E70C nf-dev-visualstudio
