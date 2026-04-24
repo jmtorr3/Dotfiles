@@ -21,15 +21,17 @@ app_icon() {
     "Simulator")         printf '\xef\x84\x8b' ;;  # U+F10B nf-fa-mobile
     # Chat / Communication
     "Slack")             printf '\xef\x86\x98' ;;  # U+F198 nf-fa-slack
-    "Discord")           printf '\xef\x8e\x92' ;;  # U+F392 nf-fa-discord
+    "Discord")           printf '\xef\x87\xbf' ;;  # U+F392 nf-fa-discord
     "Telegram")          printf '\xef\x8b\x86' ;;  # U+F2C6 nf-fa-telegram
     "Mail")              printf '\xef\x83\xa0' ;;  # U+F0E0 nf-fa-envelope
+    "Outlook"|"Microsoft Outlook")
+                         printf '\xf3\xb0\xb4\xa2' ;;  # U+F0D22 nf-md-microsoft_outlook
     "Messages")          printf '\xef\x81\xb5' ;;  # U+F075 nf-fa-comment
     # Media
     "Spotify")           printf '\xef\x86\xbc' ;;  # U+F1BC nf-fa-spotify
     "Music")             printf '\xef\x80\x81' ;;  # U+F001 nf-fa-music
     # Productivity
-    "Obsidian")          printf '\xef\x97\xbc' ;;  # U+F5FC nf-fa-diamond
+    "Obsidian")          printf '\xef\x8a\x9f' ;;  # U+F5FC nf-fa-diamond
     "Finder")            printf '\xef\x85\xb9' ;;  # U+F179 nf-fa-apple
     "Notes")             printf '\xef\x89\x89' ;;  # U+F249 nf-fa-sticky-note-o
     "Calendar")          printf '\xef\x81\xb3' ;;  # U+F073 nf-fa-calendar
