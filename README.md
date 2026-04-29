@@ -77,7 +77,9 @@ Backs up any existing configs to `<name>.bak` before linking.
 
 ### Neovim
 
-Config lives at `config/nvim/linux/init.vim` (Linux) or `config/nvim/macos/init.vim` (macOS). Uses [vim-plug](https://github.com/junegunn/vim-plug).
+Config lives at `config/nvim/init.vim`. Uses [vim-plug](https://github.com/junegunn/vim-plug).
+
+**See [NVIM.md](NVIM.md) for the full keymap cheatsheet and plugin walkthrough.**
 
 **Plugins:**
 - `github-nvim-theme` — colorscheme
@@ -114,8 +116,7 @@ config/
 ├── dunst/       # Notifications
 ├── kitty/       # Terminal
 └── nvim/
-    ├── linux/   # Linux config
-    └── macos/   # macOS config
+    └── init.vim   # Single config — see NVIM.md
 
 scripts/
 ├── symlink.sh                   # Symlink all configs to ~/.config/
