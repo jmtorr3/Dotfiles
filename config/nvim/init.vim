@@ -215,6 +215,7 @@ else
       python = { 'black' },
       javascript = { 'prettier' },
       typescript = { 'prettier' },
+      java = { 'google-java-format' },
     },
     format_on_save = {
       lsp_fallback = true,
@@ -246,7 +247,7 @@ if ok_ts then
   configs.setup({
     ensure_installed = {
       "lua", "python", "javascript", "typescript",
-      "c", "cpp", "markdown", "bash"
+      "c", "cpp", "markdown", "bash", "java"
       -- "latex", -- enable this only if you install the tree-sitter CLI
     },
     ignore_install = { "latex" }, -- avoid latex requiring tree-sitter CLI
@@ -286,6 +287,10 @@ set foldlevel=99
 " LSP (new vim.lsp.config API, no require('lspconfig'))
 " =============================
 lua << EOF
+-- Initialize Mason so :Mason / :MasonInstall commands exist
+pcall(function() require("mason").setup() end)
+pcall(function() require("mason-lspconfig").setup({ ensure_installed = { "jdtls" } }) end)
+
 -- Shared on_attach for all servers
 local on_attach = function(_, bufnr)
   local nmap = function(lhs, rhs, desc)
@@ -328,12 +333,22 @@ vim.lsp.config("lua_ls", {
   },
 })
 
+-- Per-server tweaks for jdtls (Java)
+vim.lsp.config("jdtls", {
+  -- jdtls itself runs on JDK 21+, and we point project builds at the same
+  cmd_env = {
+    JAVA_HOME = "/opt/homebrew/opt/openjdk@21",
+  },
+  root_markers = { "build.gradle", "build.gradle.kts", "settings.gradle", "settings.gradle.kts", "pom.xml", ".git" },
+})
+
 -- Enable the servers you actually want
 vim.lsp.enable({
   "lua_ls",
   "pyright",
   "ts_ls",   -- new name instead of tsserver
   "clangd",
+  "jdtls",
 })
 EOF
 
