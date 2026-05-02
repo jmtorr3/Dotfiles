@@ -50,6 +50,19 @@ else
   link_config kitty
 fi
 
+# tmux (shared) — uses XDG path ~/.config/tmux/tmux.conf (tmux 3.1+)
+link_config tmux
+
+# Remove legacy ~/.tmux.conf if it exists (or back it up if it's not a symlink)
+LEGACY_TMUX="$HOME/.tmux.conf"
+if [ -L "$LEGACY_TMUX" ]; then
+  rm "$LEGACY_TMUX"
+  ok "Removed legacy symlink $LEGACY_TMUX (now using XDG path)"
+elif [ -f "$LEGACY_TMUX" ]; then
+  warn "Backing up legacy $LEGACY_TMUX -> ${LEGACY_TMUX}.bak"
+  mv "$LEGACY_TMUX" "${LEGACY_TMUX}.bak"
+fi
+
 NVIM_SRC="$DOTFILES_DIR/config/nvim/init.vim"
 
 # Neovim (shared)

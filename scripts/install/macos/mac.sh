@@ -45,6 +45,7 @@ BREW_PKGS=(
   curl
   git
   latexmk
+  tmux
 )
 
 BREW_CASK_PKGS=(
@@ -87,6 +88,17 @@ mkdir -p "$CONFIG_DIR"
 
 link_config aerospace
 link_config sketchybar
+link_config tmux
+
+# Remove legacy ~/.tmux.conf in favor of XDG path
+LEGACY_TMUX="$HOME/.tmux.conf"
+if [ -L "$LEGACY_TMUX" ]; then
+  rm "$LEGACY_TMUX"
+  ok "Removed legacy symlink $LEGACY_TMUX"
+elif [ -f "$LEGACY_TMUX" ]; then
+  warn "Backing up legacy $LEGACY_TMUX -> ${LEGACY_TMUX}.bak"
+  mv "$LEGACY_TMUX" "${LEGACY_TMUX}.bak"
+fi
 
 # Neovim
 mkdir -p "$CONFIG_DIR/nvim"

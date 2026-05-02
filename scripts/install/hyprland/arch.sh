@@ -31,6 +31,7 @@ PACMAN_PKGS=(
   rofi-wayland
   dunst
   kitty
+  tmux
   # Dependencies / utilities
   pipewire
   wireplumber
