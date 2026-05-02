@@ -230,6 +230,21 @@ else
         -- If latexindent is in a non-standard path, uncomment and set:
         -- command = '/usr/local/texlive/2025/bin/universal-darwin/latexindent',
       },
+      -- C/C++: always use the Linux-kernel .clang-format symlinked at ~/.clang-format,
+      -- unless a project closer to the file ships its own .clang-format (clang-format's
+      -- normal upward search wins when --style=file:... is not used).
+      clang_format = {
+        prepend_args = function(_, ctx)
+          local found = vim.fs.find(
+            '.clang-format',
+            { upward = true, path = ctx.dirname, stop = vim.loop.os_homedir() }
+          )
+          if #found > 0 then
+            return {} -- closer .clang-format wins via clang-format's own walk
+          end
+          return { '--style=file:' .. vim.fn.expand('~/.clang-format') }
+        end,
+      },
     },
   })
 
