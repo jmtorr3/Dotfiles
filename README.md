@@ -5,6 +5,8 @@ Personal configuration files for Neovim, tmux, Hyprland (Linux), and macOS (Aero
 **Docs:**
 - [Neovim](docs/nvim.md) — keymap cheatsheet, plugin walkthrough, dashboard
 - [tmux](docs/tmux.md) — keybinds, theme, install
+- [AeroSpace](docs/aerospace.md) — keybinds, modes, gaps, behaviors
+- [Sketchybar](docs/sketchybar.md) — bar layout, plugins, theming
 
 ## Setup
 
@@ -67,8 +69,8 @@ Use `terminal.sh` when you don't want to touch someone else's window manager, st
 
 | Config | Location | Description |
 |--------|----------|-------------|
-| AeroSpace | `config/aerospace/` | Tiling window manager — keybinds, gaps, workspace rules; fires Sketchybar triggers |
-| Sketchybar | `config/sketchybar/` | Status bar — dynamic workspace indicators with app icons, clock, battery, volume. Font: Monocraft (text) + Hack Nerd Font (glyphs) |
+| AeroSpace | `config/aerospace/` | Tiling window manager — keybinds, gaps, workspace rules; fires Sketchybar triggers. See [docs/aerospace.md](docs/aerospace.md) |
+| Sketchybar | `config/sketchybar/` | Status bar — dynamic workspace indicators with app icons, clock, battery, volume. Font: Monocraft (text) + Hack Nerd Font (glyphs). See [docs/sketchybar.md](docs/sketchybar.md) |
 
 ### Hyprland Desktop (Linux)
 
@@ -135,7 +137,9 @@ config/
 
 docs/
 ├── nvim.md       # Neovim cheatsheet & plugin walkthrough
-└── tmux.md       # tmux cheatsheet & theme
+├── tmux.md       # tmux cheatsheet & theme
+├── aerospace.md  # AeroSpace WM cheatsheet
+└── sketchybar.md # Sketchybar layout, plugins, theming
 
 scripts/
 ├── symlink/
