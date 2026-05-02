@@ -32,14 +32,14 @@ Reload inside an existing session with `prefix + r`.
 
 ### Pane Navigation
 
-Vim-style movement without the prefix — works anywhere, including inside nvim if you have a navigator plugin.
+Vim-style movement with the prefix. `Alt-hjkl` is intentionally not bound — AeroSpace owns those on macOS for window focus, so reserving Alt for the OS layer keeps tmux and the WM from fighting.
 
 | Keys | Action |
 |---|---|
-| `Alt-h` | Focus pane left |
-| `Alt-j` | Focus pane down |
-| `Alt-k` | Focus pane up |
-| `Alt-l` | Focus pane right |
+| `prefix + h` | Focus pane left |
+| `prefix + j` | Focus pane down |
+| `prefix + k` | Focus pane up |
+| `prefix + l` | Focus pane right |
 
 ### Splits & Windows
 
