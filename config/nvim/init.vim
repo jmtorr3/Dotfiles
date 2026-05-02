@@ -19,8 +19,8 @@ nnoremap <leader>tc :tabclose<CR>
 nnoremap <leader>to :tabonly<CR>
 
 " Use H and L (Shift+h/l) to jump between tabs quickly
-nnoremap <leader>H :tabprevious<CR>
-nnoremap <leader>L :tabnext<CR>
+nnoremap <silent> H :tabprevious<CR>
+nnoremap <silent> L :tabnext<CR>
 
 " Move tabs around with leader + arrow keys
 nnoremap <leader><Left> :tabmove -1<CR>
