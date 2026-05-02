@@ -34,7 +34,9 @@ Installs Hyprland + all dependencies (waybar, rofi, dunst, kitty, etc.) and syml
 ./scripts/install/hyprland/arch.sh
 ```
 
-### Neovim Only
+### Terminal Stack Only (no desktop env)
+
+Installs Neovim, tmux, fastfetch, and clang-format; symlinks all four configs via `scripts/symlink/terminal.sh`. Safe on shared/work machines and headless VMs — does not touch window managers, status bars, or launchers.
 
 **Ubuntu:**
 ```bash
@@ -44,6 +46,11 @@ Installs Hyprland + all dependencies (waybar, rofi, dunst, kitty, etc.) and syml
 **Debian:**
 ```bash
 ./scripts/install/nvim/debian.sh
+```
+
+**Arch (headless / no Hyprland):**
+```bash
+./scripts/install/nvim/arch.sh
 ```
 
 **NixOS:**
@@ -167,8 +174,9 @@ scripts/
 └── install/
     ├── macos/mac.sh             # Full macOS setup (brew + symlinks)
     ├── hyprland/arch.sh         # Full Arch setup
-    └── nvim/
-        ├── debian.sh
+    └── nvim/                   # Terminal-only installers (no desktop env)
         ├── ubuntu.sh
+        ├── debian.sh
+        ├── arch.sh
         └── nixos.sh
 ```
