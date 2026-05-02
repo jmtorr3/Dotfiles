@@ -1,6 +1,10 @@
 # Dotfiles
 
-Personal configuration files for Neovim, Hyprland (Linux), and macOS (AeroSpace + Sketchybar).
+Personal configuration files for Neovim, tmux, Hyprland (Linux), and macOS (AeroSpace + Sketchybar).
+
+**Docs:**
+- [Neovim](docs/nvim.md) — keymap cheatsheet, plugin walkthrough, dashboard
+- [tmux](docs/tmux.md) — keybinds, theme, install
 
 ## Setup
 
@@ -79,7 +83,7 @@ Backs up any existing configs to `<name>.bak` before linking.
 
 Config lives at `config/nvim/init.vim`. Uses [vim-plug](https://github.com/junegunn/vim-plug).
 
-**See [NVIM.md](NVIM.md) for the full keymap cheatsheet and plugin walkthrough.**
+**See [docs/nvim.md](docs/nvim.md) for the full keymap cheatsheet and plugin walkthrough.**
 
 **Plugins:**
 - `github-nvim-theme` — colorscheme
@@ -91,6 +95,14 @@ Config lives at `config/nvim/init.vim`. Uses [vim-plug](https://github.com/juneg
 - `vim-fugitive` — Git
 - `toggleterm.nvim` — integrated terminal
 - `alpha-nvim` — dashboard
+
+### tmux
+
+Config lives at `config/tmux/tmux.conf`, symlinked to `~/.config/tmux/tmux.conf` (XDG path, tmux 3.1+).
+
+**See [docs/tmux.md](docs/tmux.md) for the full keymap cheatsheet, theme, and settings.**
+
+Highlights: vim-style `Alt-hjkl` pane switching without the prefix, splits inherit cwd, true color, OSC 52 clipboard passthrough, and a status bar themed in the portfolio's lighter blue (`#4aafd4`).
 
 ---
 
@@ -115,8 +127,14 @@ config/
 ├── rofi/        # Launcher + all menus
 ├── dunst/       # Notifications
 ├── kitty/       # Terminal
+├── tmux/
+│   └── tmux.conf  # tmux config — see docs/tmux.md
 └── nvim/
-    └── init.vim   # Single config — see NVIM.md
+    └── init.vim   # Single config — see docs/nvim.md
+
+docs/
+├── nvim.md       # Neovim cheatsheet & plugin walkthrough
+└── tmux.md       # tmux cheatsheet & theme
 
 scripts/
 ├── symlink.sh                   # Symlink all configs to ~/.config/

@@ -2,7 +2,7 @@
 
 A documented walkthrough of this Neovim setup — every keybind, every plugin, what does what.
 
-Config lives at [`config/nvim/init.vim`](config/nvim/init.vim). It's a single Vimscript file with embedded `lua` blocks. Plugins are managed with [vim-plug](https://github.com/junegunn/vim-plug).
+Config lives at [`config/nvim/init.vim`](../config/nvim/init.vim). It's a single Vimscript file with embedded `lua` blocks. Plugins are managed with [vim-plug](https://github.com/junegunn/vim-plug).
 
 - **Leader:** `<Space>`
 - **LocalLeader:** `\` (used by vimtex)
