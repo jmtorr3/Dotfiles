@@ -1,36 +1,11 @@
 #!/usr/bin/env bash
-# Install macOS desktop config: AeroSpace + Sketchybar + Neovim
+# Install macOS desktop config: AeroSpace + Sketchybar + tmux + Neovim
 # Usage: ./scripts/install/macos/mac.sh
 
 set -e
 
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../../.." && pwd)"
-CONFIG_DIR="$HOME/.config"
-
-info() { echo "[INFO]  $*"; }
-ok()   { echo "[OK]    $*"; }
-warn() { echo "[WARN]  $*"; }
-
-link_config() {
-  local name="$1"
-  local src="$DOTFILES_DIR/config/$name"
-  local dst="$CONFIG_DIR/$name"
-
-  if [ ! -e "$src" ]; then
-    warn "Source not found, skipping: $src"
-    return
-  fi
-
-  if [ -L "$dst" ]; then
-    rm "$dst"
-  elif [ -e "$dst" ]; then
-    warn "Backing up existing $dst -> ${dst}.bak"
-    mv "$dst" "${dst}.bak"
-  fi
-
-  ln -sfn "$src" "$dst"
-  ok "Linked $dst -> $src"
-}
+source "$DOTFILES_DIR/scripts/symlink/_lib.sh"
 
 # --- Homebrew check ---
 if ! command -v brew &>/dev/null; then
@@ -51,10 +26,6 @@ BREW_PKGS=(
 BREW_CASK_PKGS=(
   aerospace
   skim
-)
-
-TAP_PKGS=(
-  "FelixKratz/formulae/sketchybar"
 )
 
 info "Updating Homebrew..."
@@ -83,41 +54,11 @@ ok "vim-plug installed."
 
 # --- Symlink configs ---
 info "Symlinking configs..."
-
-mkdir -p "$CONFIG_DIR"
-
-link_config aerospace
-link_config sketchybar
-link_config tmux
-
-# Remove legacy ~/.tmux.conf in favor of XDG path
-LEGACY_TMUX="$HOME/.tmux.conf"
-if [ -L "$LEGACY_TMUX" ]; then
-  rm "$LEGACY_TMUX"
-  ok "Removed legacy symlink $LEGACY_TMUX"
-elif [ -f "$LEGACY_TMUX" ]; then
-  warn "Backing up legacy $LEGACY_TMUX -> ${LEGACY_TMUX}.bak"
-  mv "$LEGACY_TMUX" "${LEGACY_TMUX}.bak"
-fi
-
-# Neovim
-mkdir -p "$CONFIG_DIR/nvim"
-NVIM_SRC="$DOTFILES_DIR/config/nvim/init.vim"
-NVIM_DST="$CONFIG_DIR/nvim/init.vim"
-
-if [ -L "$NVIM_DST" ]; then
-  rm "$NVIM_DST"
-elif [ -f "$NVIM_DST" ]; then
-  warn "Backing up existing $NVIM_DST -> ${NVIM_DST}.bak"
-  mv "$NVIM_DST" "${NVIM_DST}.bak"
-fi
-
-ln -sfn "$NVIM_SRC" "$NVIM_DST"
-ok "Linked $NVIM_DST -> $NVIM_SRC"
+bash "$DOTFILES_DIR/scripts/symlink/all.sh"
 
 # --- Make sketchybar plugins executable ---
 info "Setting plugin permissions..."
-chmod +x "$CONFIG_DIR/sketchybar/plugins/"*.sh
+chmod +x "$DOTFILES_DIR/config/sketchybar/plugins/"*.sh
 ok "Plugins are executable."
 
 # --- Start services ---

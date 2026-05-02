@@ -18,10 +18,11 @@ Comes with the macOS and Arch installers:
 If tmux is already installed and you only want the config wired up:
 
 ```bash
-./scripts/symlink.sh
+./scripts/symlink/terminal.sh   # tmux + nvim, nothing else
+./scripts/symlink/all.sh        # everything (desktop too)
 ```
 
-The symlink script removes any legacy `~/.tmux.conf` (or backs it up to `.bak` if it's a real file) so the XDG path takes over cleanly.
+Either one removes any legacy `~/.tmux.conf` (or backs it up to `.bak` if it's a real file) so the XDG path takes over cleanly. Use `terminal.sh` on shared or work machines where you don't want to overwrite someone else's window manager or status bar configs.
 
 Reload inside an existing session with `prefix + r`.
 

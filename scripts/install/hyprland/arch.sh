@@ -64,6 +64,6 @@ if [ -n "$AUR" ]; then
 fi
 
 info "Symlinking configs..."
-bash "$DOTFILES_DIR/scripts/symlink.sh"
+bash "$DOTFILES_DIR/scripts/symlink/all.sh"
 
 ok "Hyprland setup complete. Log out and select Hyprland from your display manager."

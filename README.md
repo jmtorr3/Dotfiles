@@ -53,10 +53,11 @@ Installs Hyprland + all dependencies (waybar, rofi, dunst, kitty, etc.) and syml
 If packages are already installed and you just want to wire up the configs:
 
 ```bash
-./scripts/symlink.sh
+./scripts/symlink/all.sh         # OS-detected: full desktop + terminal
+./scripts/symlink/terminal.sh    # tmux + nvim only — safe on shared/work machines
 ```
 
-Backs up any existing configs to `<name>.bak` before linking.
+Use `terminal.sh` when you don't want to touch someone else's window manager, status bar, or launcher configs (e.g. on a shared Mac, or trying things out on a work laptop). Both back up any existing configs to `<name>.bak` before linking.
 
 ---
 
@@ -137,7 +138,10 @@ docs/
 └── tmux.md       # tmux cheatsheet & theme
 
 scripts/
-├── symlink.sh                   # Symlink all configs to ~/.config/
+├── symlink/
+│   ├── all.sh                   # Full desktop + terminal (OS-detected)
+│   ├── terminal.sh              # tmux + nvim only — safe on shared machines
+│   └── _lib.sh                  # Shared link helpers
 └── install/
     ├── macos/mac.sh             # Full macOS setup (brew + symlinks)
     ├── hyprland/arch.sh         # Full Arch setup
