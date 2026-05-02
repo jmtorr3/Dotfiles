@@ -216,6 +216,8 @@ else
       javascript = { 'prettier' },
       typescript = { 'prettier' },
       java = { 'google-java-format' },
+      c = { 'clang_format' },
+      cpp = { 'clang_format' },
     },
     format_on_save = {
       lsp_fallback = true,

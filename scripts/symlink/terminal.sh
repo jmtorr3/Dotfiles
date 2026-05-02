@@ -14,6 +14,8 @@ info "Symlinking terminal configs from $DOTFILES_DIR"
 
 link_config tmux
 clean_legacy_tmux
+link_config fastfetch
 link_nvim
+link_clang_format
 
 info "Done. Terminal configs symlinked."

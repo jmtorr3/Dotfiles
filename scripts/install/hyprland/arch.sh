@@ -32,6 +32,8 @@ PACMAN_PKGS=(
   dunst
   kitty
   tmux
+  fastfetch
+  clang
   # Dependencies / utilities
   pipewire
   wireplumber

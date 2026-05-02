@@ -115,6 +115,27 @@ Formatters by filetype:
 | `lua` | `stylua` |
 | `python` | `black` |
 | `javascript`, `typescript` | `prettier` |
+| `c`, `cpp` | `clang-format` (Linux kernel style — see below) |
+| `java` | `google-java-format` |
+
+#### C / C++ — Linux kernel style
+
+C and C++ files are formatted on save with `clang-format`. The active style is the Linux kernel coding-style rules:
+
+- **Tabs** (8-wide) for indentation
+- **100-column** line limit
+- Function opening brace on its **own line**; control-flow braces on the **same line**
+- `*` binds to the variable (`char *name`, not `char* name`)
+- No spaces inside parens; spaces around binary operators
+- `case` labels at the same indent as `switch`
+
+The full ruleset lives at [`config/clang-format/linux-kernel.clang-format`](../config/clang-format/linux-kernel.clang-format) and is symlinked to `~/.clang-format` by the symlink scripts. clang-format walks up from the source file looking for a `.clang-format` — so:
+
+- **In a project with its own `.clang-format`** (e.g. the actual Linux kernel tree, or a repo with house style) → that wins, our home-dir copy is ignored.
+- **Anywhere else under `$HOME`** → kernel style is the default.
+- **Outside `$HOME`** (e.g. `/tmp`) → falls back to clang-format's built-in LLVM style.
+
+To override per-project, drop a `.clang-format` at the project root with whatever rules you want — closest one wins.
 
 ### Treesitter
 

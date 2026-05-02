@@ -21,6 +21,8 @@ BREW_PKGS=(
   git
   latexmk
   tmux
+  fastfetch
+  clang-format
 )
 
 BREW_CASK_PKGS=(

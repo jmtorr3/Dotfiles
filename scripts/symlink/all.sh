@@ -31,6 +31,8 @@ fi
 # Terminal (shared across OSes)
 link_config tmux
 clean_legacy_tmux
+link_config fastfetch
 link_nvim
+link_clang_format
 
 info "Done. All configs symlinked."

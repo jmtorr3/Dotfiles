@@ -7,6 +7,7 @@ Personal configuration files for Neovim, tmux, Hyprland (Linux), and macOS (Aero
 - [tmux](docs/tmux.md) — keybinds, theme, install
 - [AeroSpace](docs/aerospace.md) — keybinds, modes, gaps, behaviors
 - [Sketchybar](docs/sketchybar.md) — bar layout, plugins, theming
+- [Fastfetch](docs/fastfetch.md) — personal ASCII logo + per-host accent color
 
 ## Setup
 
@@ -107,6 +108,18 @@ Config lives at `config/tmux/tmux.conf`, symlinked to `~/.config/tmux/tmux.conf`
 
 Highlights: vim-style `Alt-hjkl` pane switching without the prefix, splits inherit cwd, true color, OSC 52 clipboard passthrough, and a status bar themed in the portfolio's lighter blue (`#4aafd4`).
 
+### Fastfetch
+
+Replaces the OS default logo with the portfolio's Braille ASCII logo on every machine, and tints it a different color depending on `$(hostname -s)` — main Mac uses the portfolio accent (`#4aafd4`), homelab/Pi/Linux boxes get their own.
+
+**See [docs/fastfetch.md](docs/fastfetch.md) for the host → color table and how to add new hosts.**
+
+Add this to your shell rc to pick up per-host colors:
+
+```bash
+alias fastfetch="$HOME/.config/fastfetch/themed.sh"
+```
+
 ---
 
 ## Directory Structure
@@ -131,15 +144,20 @@ config/
 ├── dunst/       # Notifications
 ├── kitty/       # Terminal
 ├── tmux/
-│   └── tmux.conf  # tmux config — see docs/tmux.md
+│   └── tmux.conf    # tmux config — see docs/tmux.md
+├── fastfetch/
+│   ├── config.jsonc # Modules + logo source
+│   ├── logo.txt     # Braille ASCII from portfolio
+│   └── themed.sh    # Per-host color wrapper — see docs/fastfetch.md
 └── nvim/
-    └── init.vim   # Single config — see docs/nvim.md
+    └── init.vim     # Single config — see docs/nvim.md
 
 docs/
 ├── nvim.md       # Neovim cheatsheet & plugin walkthrough
 ├── tmux.md       # tmux cheatsheet & theme
 ├── aerospace.md  # AeroSpace WM cheatsheet
-└── sketchybar.md # Sketchybar layout, plugins, theming
+├── sketchybar.md # Sketchybar layout, plugins, theming
+└── fastfetch.md  # Fastfetch logo + per-host color
 
 scripts/
 ├── symlink/
