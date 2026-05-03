@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 # Install Neovim + terminal stack (tmux, fastfetch, clang-format) on Fedora.
-# Everything comes from dnf — Fedora's repos are recent enough for nvim, tmux,
-# and fastfetch out of the box. Calls the shared symlink script — does NOT
-# touch any desktop env. Safe on a server / VM.
+# Calls the shared symlink script — does NOT touch any desktop env. Safe on
+# a server / VM.
 #
 # Usage: ./scripts/install/nvim/fedora.sh
 
@@ -18,19 +17,31 @@ warn() { echo "[WARN]  $*"; }
 command -v curl &>/dev/null || sudo dnf install -y curl
 command -v git  &>/dev/null || sudo dnf install -y git
 
-# --- Terminal stack ---
-DNF_PKGS=(
+# --- Core terminal stack (these MUST install or the setup is broken) ---
+CORE_PKGS=(
   neovim
   tmux
-  fastfetch
   clang-tools-extra   # provides clang-format
-  zathura
-  texlive-latexmk
 )
 
-info "Installing terminal packages from dnf..."
-sudo dnf install -y "${DNF_PKGS[@]}"
-ok "Terminal packages installed."
+info "Installing core terminal packages from dnf..."
+sudo dnf install -y "${CORE_PKGS[@]}"
+ok "Core packages installed."
+
+# --- Optional packages (don't abort the script if any are missing) ---
+install_optional() {
+  local pkg="$1"
+  if sudo dnf install -y "$pkg" 2>/dev/null; then
+    ok "$pkg installed."
+  else
+    warn "$pkg not available on this Fedora release — skipping."
+  fi
+}
+
+info "Installing optional packages..."
+install_optional fastfetch
+install_optional zathura
+install_optional texlive-latexmk
 
 # --- vim-plug ---
 info "Installing vim-plug..."
