@@ -48,6 +48,11 @@ Installs Neovim, tmux, fastfetch, and clang-format; symlinks all four configs vi
 ./scripts/install/nvim/debian.sh
 ```
 
+**Fedora:**
+```bash
+./scripts/install/nvim/fedora.sh
+```
+
 **Arch (headless / no Hyprland):**
 ```bash
 ./scripts/install/nvim/arch.sh
@@ -177,6 +182,7 @@ scripts/
     └── nvim/                   # Terminal-only installers (no desktop env)
         ├── ubuntu.sh
         ├── debian.sh
+        ├── fedora.sh
         ├── arch.sh
         └── nixos.sh
 ```
